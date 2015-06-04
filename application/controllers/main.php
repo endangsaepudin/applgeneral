@@ -8,8 +8,7 @@ class Main extends CI_Controller {
 	
 	public function home()
 	{
-		$this->template->title('APP GENERAL');
-		$this->template->set('data1', "jjjjj");		
+		$this->template->title('Dashboard');
 		$this->template->set_partial('navigation', 'layouts/navigation');
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet'>");
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/metisMenu/dist/metisMenu.min.css' rel='stylesheet'>");
@@ -22,8 +21,7 @@ class Main extends CI_Controller {
 	
 	public function group()
 	{
-		$this->template->title('APP GENERAL');
-		$this->template->set('data1', "jjjjj");		
+		$this->template->title('Group');	
 		$this->template->set_partial('navigation', 'layouts/navigation');
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet'>");
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/metisMenu/dist/metisMenu.min.css' rel='stylesheet'>");
@@ -37,8 +35,7 @@ class Main extends CI_Controller {
 	
 	public function menu()
 	{
-		$this->template->title('APP GENERAL');
-		$this->template->set('data1', "jjjjj");		
+		$this->template->title('Menu');
 		$this->template->set_partial('navigation', 'layouts/navigation');
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet'>");
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/metisMenu/dist/metisMenu.min.css' rel='stylesheet'>");
@@ -51,8 +48,7 @@ class Main extends CI_Controller {
 	
 	public function location()
 	{
-		$this->template->title('APP GENERAL');
-		$this->template->set('data1', "jjjjj");		
+		$this->template->title('Location');	
 		$this->template->set_partial('navigation', 'layouts/navigation');
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet'>");
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/metisMenu/dist/metisMenu.min.css' rel='stylesheet'>");
@@ -65,8 +61,7 @@ class Main extends CI_Controller {
 	
 	public function user()
 	{
-		$this->template->title('APP GENERAL');
-		$this->template->set('data1', "jjjjj");		
+		$this->template->title('User');	
 		$this->template->set_partial('navigation', 'layouts/navigation');
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet'>");
 		$this->template->append_metadata("<link href='".base_url()."resources/startbootstrap-sb-admin-2-1.0.7/bower_components/metisMenu/dist/metisMenu.min.css' rel='stylesheet'>");
