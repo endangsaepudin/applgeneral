@@ -29,7 +29,7 @@ class Menu extends CI_Controller {
 				<td><?php echo $result->code; ?></td>
 				<td><?php echo $result->idelete; ?></td>
 				<td>
-					<a class="btn btn-success btn-sm" onclick="editData(<?php echo $result->id; ?>,'<?php echo $result->name; ?>',<?php echo $result->code; ?>,<?php echo $result->idelete; ?>);">
+					<a class="btn btn-success btn-sm" onclick="editData(<?php echo $result->id; ?>,'<?php echo $result->name; ?>','<?php echo $result->code; ?>',<?php echo $result->idelete; ?>);">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 					</a>
 					<a class="btn btn-danger btn-sm" onclick="deleteData(<?php echo $result->id; ?>);">
