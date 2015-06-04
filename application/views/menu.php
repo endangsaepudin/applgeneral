@@ -10,8 +10,8 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
 						<div class="panel-heading">
-                            <button type="button" class="btn btn-primary btn-lg"  onclick="addData();">
-								Add
+                            <button type="button" class="btn btn-primary btn-sm"  onclick="addData();">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 							</button>
                         </div>
                         <div class="panel-body">
