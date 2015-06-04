@@ -12,9 +12,8 @@
 	</head>
 	<body>
 		<div id="wrapper">
-		<?php echo $template['partials']['navigation']; ?>
-		<?php echo $template['body']; ?>
+			<?php echo $template['partials']['navigation']; ?>
+			<?php echo $template['body']; ?>
 		</div>
-		<!-- /#wrapper -->
 	</body>
 </html>
