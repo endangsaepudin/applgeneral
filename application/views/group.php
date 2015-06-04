@@ -41,7 +41,7 @@
 						<div class="form-group">								
 							<label for="name">Name</label>								
 							<input type="text" class="form-control" id="name" name="name" data-minlength="5" placeholder="Enter group" required>
-							<div class="help-block with-errors"></div>
+							<span class="help-block">Minimum of 5 characters</span>
 						</div>						
 					</div>
 					<div class="modal-footer">
@@ -69,7 +69,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="<?php echo base_url(); ?>resources/startbootstrap-sb-admin-2-1.0.7/dist/js/sb-admin-2.js"></script>
 	
-	 <!-- JQuery UI -->
+	<!-- JQuery UI -->
     <script src="<?php echo base_url(); ?>resources/jqueryui/jquery-ui.min.js"></script>
 	
 	<!-- Form Validator -->
@@ -79,8 +79,12 @@
     <script>		
 		function addData(){
 			$('#winFormGroup').modal('show');
-			$('#winFormGroupLabel').html("Add Group");
+			$('#winFormGroupLabel').html("Add Group");			
 		}
+		
+		$('#winFormGroup').on('hidden.bs.modal', function(){
+			$(this).find('form')[0].reset();
+		});
 		
 		$('#formGroup').validator().on('submit', function (e) {
 			if (e.isDefaultPrevented()) {
@@ -118,6 +122,7 @@
 						});
 					});
 				}
+				$('.form-group').removeClass('help-block');
 				return false;
 			}
 		})
