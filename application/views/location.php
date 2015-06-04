@@ -45,12 +45,12 @@
 						</div>
 						<div class="form-group">								
 							<label for="left_id">Left Id</label>								
-							<input type="text" class="form-control" id="left_id" name="left_id" placeholder="Enter left id" required>
+							<input type="number" class="form-control" id="left_id" name="left_id" placeholder="Enter left id" required>
 							<div class="help-block with-errors"></div>
 						</div>
 						<div class="form-group">								
 							<label for="right_id">Right Id</label>								
-							<input type="text" class="form-control" id="right_id" name="right_id" placeholder="Enter right id" required>
+							<input type="number" class="form-control" id="right_id" name="right_id" placeholder="Enter right id" required>
 							<div class="help-block with-errors"></div>
 						</div>
 					</div>
