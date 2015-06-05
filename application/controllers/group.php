@@ -48,7 +48,8 @@ class Group extends CI_Controller {
 	public function insert_data()
 	{
 		$name = $this->input->post("name",true);
-		$data = array("name"=>$name,"idelete"=>0);
+		$idelete = 0;
+		$data = array("name"=>$name,"idelete"=>$idelete);
 		if($this->db->insert("[group]",$data)){
 		?>
 			<div class="alert alert-success alert-dismissible" role="alert">
@@ -71,7 +72,7 @@ class Group extends CI_Controller {
 	{
 		$id = $this->input->post("id",true);
 		$name = $this->input->post("name",true);
-		$data = array("name"=>$name,"idelete"=>0);
+		$data = array("name"=>$name);
 		if($this->db->where("id",$id)->update("[group]",$data)){
 		?>
 			<div class="alert alert-success alert-dismissible" role="alert">
@@ -93,7 +94,9 @@ class Group extends CI_Controller {
 	public function delete_data()
 	{
 		$id = $this->input->post("id",true);
-		if($this->db->where("id",$id)->delete("[group]")){
+		//if($this->db->where("id",$id)->delete("[group]")){
+		$data = array("idelete"=>1);
+		if($this->db->where("id",$id)->update("[group]",$data)){
 		?>
 			<div class="alert alert-success alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

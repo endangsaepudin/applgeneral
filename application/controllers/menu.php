@@ -99,7 +99,9 @@ class Menu extends CI_Controller {
 	public function delete_data()
 	{
 		$id = $this->input->post("id",true);
-		if($this->db->where("id",$id)->delete("menu")){
+		//if($this->db->where("id",$id)->delete("menu")){
+		$data = array("idelete"=>1);
+		if($this->db->where("id",$id)->update("menu",$data)){
 		?>
 			<div class="alert alert-success alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

@@ -103,7 +103,9 @@ class Location extends CI_Controller {
 	public function delete_data()
 	{
 		$id = $this->input->post("id",true);
-		if($this->db->where("id",$id)->delete("location")){
+		//if($this->db->where("id",$id)->delete("location")){
+		$data = array("idelete"=>1);
+		if($this->db->where("id",$id)->update("location",$data)){
 		?>
 			<div class="alert alert-success alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
