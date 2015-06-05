@@ -20,12 +20,14 @@ class Group extends CI_Controller {
             </thead>
             <tbody>
 			<?php
+			$this->load->model("model_idelete");			
 			foreach($query as $result){
+				$idelete_name = $this->model_idelete->get_idelete_name($result->idelete);
 			?>
 				<tr>
 				<td><?php echo $result->id; ?></td>
 				<td><?php echo $result->name; ?></td>
-				<td><?php echo $result->idelete; ?></td>
+				<td><?php echo $idelete_name; ?></td>
 				<td>
 					<a class="btn btn-success btn-sm" onclick="editData(<?php echo $result->id; ?>,'<?php echo $result->name; ?>',<?php echo $result->idelete; ?>);">
 						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
