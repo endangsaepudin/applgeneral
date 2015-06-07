@@ -9,20 +9,20 @@ class User extends CI_Controller {
 	{
 		$query = $this->db->get("[user]")->result();
 	?>
-		<table class="table table-striped table-bordered table-hover" cellspacing="0" id="dataTables-user" width="1550">
+		<table class="table table-striped table-bordered table-hover" cellspacing="0" id="dataTables-user" width="2000">
 			<thead>
                 <tr>
-                    <th width="100">ID</th>
-                    <th width="150">NAME</th>
-					<th width="150">USERNAME</th>
-					<th width="150">EMAIL</th>
-                    <th width="150">STATUS</th>
-					<th width="150">ACTIVATION CODE</th>
-					<th width="150">CREATED</th>
-					<th width="150">UPDATED</th>
-					<th width="150">DEPARTMENT</th>
-					<th width="150">RANK</th>
-					<th width="100">ACTION</th>
+                    <th>ID</th>
+                    <th>NAME</th>
+					<th>USERNAME</th>
+					<th>EMAIL</th>
+                    <th>STATUS</th>
+					<th>ACTIVATION CODE</th>
+					<th>CREATED</th>
+					<th>UPDATED</th>
+					<th>DEPARTMENT</th>
+					<th>RANK</th>
+					<th>ACTION</th>
 				</tr>
             </thead>
             <tbody>
