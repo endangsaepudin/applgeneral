@@ -68,6 +68,7 @@ class Menu extends CI_Controller {
 				<strong>Error!</strong> Data can not be saved.
 			</div>
 		<?php
+			$this->view_data();
 		}
 	}
 	
@@ -93,6 +94,7 @@ class Menu extends CI_Controller {
 				<strong>Error!</strong> Data can not be updated.
 			</div>
 		<?php
+			$this->view_data();
 		}
 	}
 	
@@ -116,6 +118,7 @@ class Menu extends CI_Controller {
 				<strong>Error!</strong> Data can not be deleted.
 			</div>
 		<?php
+			$this->view_data();
 		}
 	}
 }
