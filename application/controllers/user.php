@@ -61,6 +61,7 @@ class User extends CI_Controller {
 	
 	public function insert_data()
 	{
+		$this->load->library('form_validation');
 		$name = $this->input->post("name",true);
 		$username = $this->input->post("username",true);
 		$email = $this->input->post("email",true);
@@ -70,26 +71,41 @@ class User extends CI_Controller {
 		$create_date = date("Y-m-d H:i:s",time());
 		$activation_code = md5(uniqid());
 		$data = array("name"=>$name,'username'=>$username,"email"=>$email,'rank_id'=>$rank_id,'department_id'=>$department_id,"idelete"=>$idelete,"create_date"=>$create_date,"activation_code"=>$activation_code);
-		if($this->db->insert("[user]",$data)){
-		?>
-			<div class="alert alert-success alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<strong>Success!</strong> Data has been saved successfully.
-			</div>
-		<?php
-			$this->view_data();
+		$this->form_validation->set_rules('email','Email','required|trim|valid_email|is_unique[[user].email]');
+		$this->form_validation->set_rules('username','Username','required|trim|is_unique[[user].username]');
+		$this->form_validation->set_message('is_unique', '%s is taken');
+		if($this->form_validation->run()){
+			if($this->db->insert("[user]",$data)){
+			?>
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Success!</strong> Data has been saved successfully.
+				</div>
+			<?php
+				$this->view_data();
+			} else {
+			?>
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Error!</strong> Data can not be saved.
+				</div>
+			<?php
+				$this->view_data();
+			}
 		} else {
 		?>
 			<div class="alert alert-danger alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<strong>Error!</strong> Data can not be saved.
+				<strong>Error!</strong> Data can not be saved. <?php echo validation_errors(); ?>
 			</div>
 		<?php
+			$this->view_data();
 		}
 	}
 	
 	public function update_data()
 	{
+		$this->load->library('form_validation');
 		$id = $this->input->post("id",true);
 		$name = $this->input->post("name",true);
 		$username = $this->input->post("username",true);
@@ -100,21 +116,45 @@ class User extends CI_Controller {
 		$edit_date = date("Y-m-d H:i:s",time());
 		$activation_code = md5(uniqid());
 		$data = array("name"=>$name,'username'=>$username,"email"=>$email,'rank_id'=>$rank_id,'department_id'=>$department_id,"edit_date"=>$edit_date);
-		if($this->db->where("id",$id)->update("[user]",$data)){
-		?>
-			<div class="alert alert-success alert-dismissible" role="alert">
-				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<strong>Success!</strong> Data has been updated successfully.
-			</div>
-		<?php
-			$this->view_data();
+		$old_data = $this->db->where("id",$id)->get("[user]")->row();
+		$old_data->email;
+		$old_data->username;
+		$need_to_validate = false;
+		if($old_data->username != $username){
+			$this->form_validation->set_rules('username','Username','required|trim|is_unique[[user].username]');
+			$need_to_validate = true;
+		}
+		if($old_data->email != $email){
+			$this->form_validation->set_rules('email','Email','required|trim|valid_email|is_unique[[user].email]');
+			$need_to_validate = true;
+		}
+		$this->form_validation->set_message('is_unique', '%s is taken');
+		if(($this->form_validation->run() and $need_to_validate) or !$need_to_validate  ){
+			if($this->db->where("id",$id)->update("[user]",$data)){
+			?>
+				<div class="alert alert-success alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Success!</strong> Data has been updated successfully.
+				</div>
+			<?php
+				$this->view_data();
+			} else {
+			?>
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Error!</strong> Data can not be updatedd.
+				</div>
+			<?php
+				$this->view_data();
+			}
 		} else {
 		?>
 			<div class="alert alert-danger alert-dismissible" role="alert">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<strong>Error!</strong> Data can not be updated.
+				<strong>Error!</strong> Data can not be updated. <?php echo validation_errors(); ?>
 			</div>
 		<?php
+			$this->view_data();
 		}
 	}
 	
